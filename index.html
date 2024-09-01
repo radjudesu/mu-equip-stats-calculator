@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MU Equipment Stats Calculator</title>
+</head>
+<body>
+    <h1>MU Equipment Stats Calculator</h1>
+
+    <!-- Max HP Calculator -->
+    <h2>Max HP Calculator</h2>
+    <label for="baseHP">Base HP:</label>
+    <input type="number" id="baseHP" placeholder="Enter base HP"><br>
+    <label for="hpBonus">HP Bonus (%):</label>
+    <input type="number" id="hpBonus" placeholder="Enter HP bonus"><br>
+    <button onclick="calculateHP()">Calculate Max HP</button>
+    <p id="hpResult"></p>
+
+    <!-- Attack Power Calculator -->
+    <h2>Attack Power + (Level/20) Calculator</h2>
+    <label for="baseAtk">Base Attack Power:</label>
+    <input type="number" id="baseAtk" placeholder="Enter base attack power"><br>
+    <label for="level">Character Level:</label>
+    <input type="number" id="level" placeholder="Enter character level"><br>
+    <button onclick="calculateAttackPower()">Calculate Attack Power</button>
+    <p id="atkResult"></p>
+
+    <!-- Attack + X% Calculator -->
+    <h2>Attack + X% Calculator</h2>
+    <label for="totalAtk">Total Attack Power:</label>
+    <input type="number" id="totalAtk" placeholder="Enter total attack power"><br>
+    <label for="atkBonus">Attack Bonus (%):</label>
+    <input type="number" id="atkBonus" placeholder="Enter attack bonus"><br>
+    <button onclick="calculateAttackBonus()">Calculate Attack with Bonus</button>
+    <p id="atkBonusResult"></p>
+
+    <script>
+        function calculateHP() {
+            const baseHP = parseFloat(document.getElementById('baseHP').value);
+            const hpBonus = parseFloat(document.getElementById('hpBonus').value);
+            const maxHP = baseHP + (baseHP * (hpBonus / 100));
+            document.getElementById('hpResult').innerText = `Max HP: ${maxHP}`;
+        }
+
+        function calculateAttackPower() {
+            const baseAtk = parseFloat(document.getElementById('baseAtk').value);
+            const level = parseFloat(document.getElementById('level').value);
+            const attackPower = baseAtk + (level / 20);
+            document.getElementById('atkResult').innerText = `Attack Power: ${attackPower}`;
+        }
+
+        function calculateAttackBonus() {
+            const totalAtk = parseFloat(document.getElementById('totalAtk').value);
+            const atkBonus = parseFloat(document.getElementById('atkBonus').value);
+            const attackWithBonus = totalAtk + (totalAtk * (atkBonus / 100));
+            document.getElementById('atkBonusResult').innerText = `Attack Power with Bonus: ${attackWithBonus}`;
+        }
+    </script>
+</body>
+</html>
